@@ -2,14 +2,18 @@ import { useState, useMemo } from "react";
 import { PRODUCTOS_INICIALES, CLIENTES, CUPONES_INICIALES, TIPOS_CLIENTE, HOY } from "./data.js";
 import { IconCoffee, IconPlus, IconMinus, IconX, IconArrowLeft, IconCheck, IconCart } from "./icons.jsx";
 
-const PRIMARY = "#B31D15";
-const BG = "#F5F1EB";
-const TEXT = "#1F2937";
-const MUTED = "#6B7280";
-const CARD_BORDER = "#E5DFD3";
-const WHITE = "#FFFFFF";
-const SUCCESS = "#166534";
-const WARN = "#B45309";
+// Paleta oficial Café SofIA (Costa Rica)
+const BG = "#EFE7DA"; // fondo principal, crema papel
+const CARD_BORDER = "#DBCBB7"; // crema arena
+const TEXT = "#0D0D0B"; // negro tinta
+const MUTED = "#2C2722"; // carbón, texto secundario
+const PRIMARY = "#B78657"; // cobre, acento de marca
+const COPPER_LIGHT = "#C1A689"; // cobre claro, texturas
+const COPPER_DARK = "#A0764D"; // cobre tostado, profundidad/sombras
+const EARTH = "#56493D"; // tierra café, transiciones
+const WHITE = "#FBF8F2"; // crema muy clara para tarjetas sobre el fondo
+const SUCCESS = "#4B6B4F";
+const WARN = COPPER_DARK;
 
 function fmtUsd(n) {
   return "$" + n.toFixed(2);
@@ -22,7 +26,7 @@ function ProductArt({ size = 64 }) {
         width: size,
         height: size,
         borderRadius: 14,
-        background: "linear-gradient(135deg, #F0E6D8, #E5DFD3)",
+        background: `linear-gradient(135deg, ${COPPER_LIGHT}, ${CARD_BORDER})`,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -251,7 +255,7 @@ export default function App() {
           <p style={{ fontSize: 15, color: MUTED, margin: "0 0 18px", lineHeight: 1.5 }}>
             El primer café del campus ADEN gestionado por inteligencia artificial.
           </p>
-          <div style={{ background: "#FDF6EC", border: `1px solid ${CARD_BORDER}`, borderRadius: 12, padding: "10px 14px", fontSize: 12.5, color: MUTED, margin: "0 0 32px" }}>
+          <div style={{ background: WHITE, border: `1px solid ${COPPER_LIGHT}`, borderRadius: 12, padding: "10px 14px", fontSize: 12.5, color: MUTED, margin: "0 0 32px" }}>
             Este café es gestionado por IA: tu pedido, tiempos y stock se procesan automáticamente.
           </div>
           <button
@@ -282,7 +286,7 @@ export default function App() {
             </ul>
           </div>
 
-          <div style={{ background: "#FEF3E2", border: "1px solid #F0D9B5", borderRadius: 14, padding: 16, marginBottom: 14 }}>
+          <div style={{ background: COPPER_LIGHT, border: `1px solid ${COPPER_DARK}`, borderRadius: 14, padding: 16, marginBottom: 14 }}>
             <p style={{ fontSize: 13, fontWeight: 700, margin: "0 0 6px", color: WARN }}>Sus límites (y por eso hay personas detrás)</p>
             <ul style={{ margin: 0, paddingLeft: 18, fontSize: 13, color: TEXT, lineHeight: 1.6 }}>
               <li>La IA puede equivocarse o quedarse sin respuesta ante algo inesperado; un miembro del equipo siempre puede intervenir.</li>
@@ -292,7 +296,7 @@ export default function App() {
             </ul>
           </div>
 
-          <div style={{ background: "#FDF6EC", border: `1px solid ${CARD_BORDER}`, borderRadius: 10, padding: "10px 14px", fontSize: 12.5, color: MUTED, marginBottom: 20 }}>
+          <div style={{ background: WHITE, border: `1px solid ${COPPER_LIGHT}`, borderRadius: 10, padding: "10px 14px", fontSize: 12.5, color: MUTED, marginBottom: 20 }}>
             Si algo no te cuadra con tu pedido, siempre puedes hablar directamente con el personal en el mostrador.
           </div>
 
@@ -377,7 +381,7 @@ export default function App() {
           <TopBar onBack={() => goto("identificacion")} title={client && !client.guest ? `¡Hola, ${client.nombre}!` : "Nuestro café"} cartCount={totalUnits} onCart={() => goto("carrito")} />
 
           {stockNotice && (
-            <div style={{ margin: "0 20px 12px", padding: "10px 14px", borderRadius: 10, fontSize: 13, background: stockNotice.type === "error" ? "#FDECEA" : "#FEF3E2", color: stockNotice.type === "error" ? "#B91C1C" : WARN }}>
+            <div style={{ margin: "0 20px 12px", padding: "10px 14px", borderRadius: 10, fontSize: 13, background: stockNotice.type === "error" ? "#FDECEA" : COPPER_LIGHT, color: stockNotice.type === "error" ? "#B91C1C" : WARN }}>
               {stockNotice.text}
             </div>
           )}
@@ -385,7 +389,7 @@ export default function App() {
           {recommendation && (
             <section style={{ padding: "0 20px 16px" }}>
               <p style={{ fontSize: 12, fontWeight: 700, color: PRIMARY, margin: "0 0 8px", letterSpacing: 0.3 }}>Recomendado para ti</p>
-              <div style={{ background: "#FDF6EC", border: `1px solid ${CARD_BORDER}`, borderRadius: 14, padding: 14, display: "flex", gap: 12, alignItems: "center" }}>
+              <div style={{ background: WHITE, border: `1px solid ${COPPER_LIGHT}`, borderRadius: 14, padding: 14, display: "flex", gap: 12, alignItems: "center" }}>
                 <ProductArt size={52} />
                 <div style={{ flex: 1 }}>
                   <p style={{ margin: 0, fontSize: 15, fontWeight: 700 }}>{recommendation.product.nombre}</p>
@@ -410,7 +414,7 @@ export default function App() {
                         <span style={{ fontSize: 14, fontWeight: 700, whiteSpace: "nowrap" }}>{fmtUsd(p.precio_usd)}</span>
                       </div>
                       <p style={{ margin: "3px 0 0", fontSize: 12.5, color: MUTED, lineHeight: 1.4 }}>{p.descripcion}</p>
-                      <p style={{ margin: "6px 0 0", fontSize: 10.5, color: "#B4AC9A" }}>imagen provisional</p>
+                      <p style={{ margin: "6px 0 0", fontSize: 10.5, color: COPPER_DARK }}>imagen provisional</p>
                       {lowStock && <p style={{ margin: "4px 0 0", fontSize: 11.5, color: WARN, fontWeight: 700 }}>¡Solo quedan {p.stock}!</p>}
                       <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 8 }}>
                         {qty === 0 ? (
@@ -438,7 +442,7 @@ export default function App() {
 
           <section style={{ padding: "24px 20px 0" }}>
             <div style={{ border: `1px dashed ${CARD_BORDER}`, borderRadius: 12, padding: 12 }}>
-              <p style={{ fontSize: 11, color: "#B4AC9A", margin: "0 0 8px" }}>Solo prototipo: simular que una bebida se agota</p>
+              <p style={{ fontSize: 11, color: COPPER_DARK, margin: "0 0 8px" }}>Solo prototipo: simular que una bebida se agota</p>
               <div style={{ display: "flex", gap: 8 }}>
                 <select value={simulateId} onChange={(e) => setSimulateId(e.target.value)} style={{ ...inputStyle(), flex: 1, fontSize: 12.5 }}>
                   <option value="">Elegí una bebida</option>
@@ -474,7 +478,7 @@ export default function App() {
           <TopBar onBack={() => goto("catalogo")} title="Tu carrito" />
 
           {stockNotice && (
-            <div style={{ margin: "0 0 12px", padding: "10px 14px", borderRadius: 10, fontSize: 13, background: stockNotice.type === "error" ? "#FDECEA" : "#FEF3E2", color: stockNotice.type === "error" ? "#B91C1C" : WARN }}>
+            <div style={{ margin: "0 0 12px", padding: "10px 14px", borderRadius: 10, fontSize: 13, background: stockNotice.type === "error" ? "#FDECEA" : COPPER_LIGHT, color: stockNotice.type === "error" ? "#B91C1C" : WARN }}>
               {stockNotice.text}
             </div>
           )}
@@ -548,7 +552,7 @@ export default function App() {
         <main style={{ maxWidth: 440, margin: "0 auto", padding: "20px 20px 40px" }}>
           <TopBar onBack={() => goto("carrito")} title="Pago" />
 
-          <div style={{ background: "#FEF3E2", border: "1px solid #F0D9B5", borderRadius: 10, padding: "10px 14px", fontSize: 12.5, color: WARN, marginBottom: 18 }}>
+          <div style={{ background: COPPER_LIGHT, border: `1px solid ${COPPER_DARK}`, borderRadius: 10, padding: "10px 14px", fontSize: 12.5, color: WARN, marginBottom: 18 }}>
             Pago simulado. No ingreses datos reales de tarjeta.
           </div>
 
@@ -601,7 +605,7 @@ export default function App() {
             </div>
           </div>
 
-          <p style={{ fontSize: 13.5, color: TEXT, background: "#FDF6EC", border: `1px solid ${CARD_BORDER}`, borderRadius: 10, padding: "10px 14px", marginBottom: 26 }}>
+          <p style={{ fontSize: 13.5, color: TEXT, background: WHITE, border: `1px solid ${COPPER_LIGHT}`, borderRadius: 10, padding: "10px 14px", marginBottom: 26 }}>
             Retira tu pedido en el mostrador presentando este número.
           </p>
 

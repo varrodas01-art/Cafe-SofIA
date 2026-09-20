@@ -2,7 +2,7 @@
 
 ## Clase 5 · De un prompt a una app publicada en Internet (tramo final)
 - [x] Etapa 0 · Punto de partida: llegaste a Claude Code — confirmado, proyecto abierto en VS Code con Claude Code respondiendo.
-- [ ] Etapa 1 · GitHub
+- [x] Etapa 1 · GitHub — repo: https://github.com/varrodas01-art/Cafe-SofIA (rama main subida, autenticado con Personal Access Token guardado en el equipo del alumno)
 - [ ] Etapa 2 · Vercel — URL pública
 
 ## Clase 6 · Conectar con el mundo real
