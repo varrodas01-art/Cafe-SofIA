@@ -21,3 +21,5 @@ _(Lo importante para retomar. Sin claves ni contraseñas.)_
 - Sistema operativo: Windows.
 - Git configurado con nombre "Cafe SofIA ADEN" y correo adencafesofia@gmail.com (cuenta de ADEN).
 - El 19/09 se reemplazó el código del prototipo por una versión nueva/corregida ("cafecr", antes en Descargas), copiada dentro de la misma carpeta `sofia-cafe/sofia-cafe`. El package.json interno del proyecto quedó con "name": "cafe-cr".
+- El 20/09 la alumna iteró el prototipo (mejora de colores) desde el chat de Claude en el navegador, que le dio instrucciones para crear un repo nuevo ("repositorio-de-Sofia") sin saber que ya existía Cafe-SofIA conectado acá. Se corrigió: solo se copió el `src/App.jsx` actualizado al proyecto y se subió al repo existente (Cafe-SofIA). Importante para el futuro: pedirle las mejoras directamente a Claude Code (acá), no volver al chat del navegador, para evitar este tipo de confusión.
+- Autenticación de git push resuelta con un Personal Access Token de GitHub, guardado en el Administrador de Credenciales de Windows (no en el repositorio). Funciona tanto desde la terminal de Claude Code como desde la propia terminal de VS Code de la alumna.
