@@ -175,6 +175,17 @@ export default function App() {
     goto("catalogo");
   }
 
+  function avisarVentaAlBackend(orderId, items) {
+    fetch("/api/registrar-venta", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        orderId,
+        items: items.map((i) => ({ id_item: i.id_producto, cantidad: i.qty })),
+      }),
+    }).catch((err) => console.error("No se pudo avisar al backend de la venta:", err));
+  }
+
   function confirmOrder() {
     const id_pedido = "PED-" + (1000 + orders.length + 1);
     const nuevoPedido = {
@@ -207,6 +218,7 @@ export default function App() {
     setOrders((o) => [...o, nuevoPedido]);
     setOrderDetails((d) => [...d, ...detalles]);
     setLastOrder({ pedido: nuevoPedido, detalles, items: cartItems });
+    avisarVentaAlBackend(id_pedido, cartItems);
     setCart({});
     setCouponInput("");
     setCouponMsg(null);

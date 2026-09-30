@@ -6,11 +6,8 @@
 
 export const PRODUCTOS_INICIALES = [
   { id_producto: "espresso", nombre: "Espresso", descripcion: "Extracción intensa y corta, pura energía.", categoria: "Café", precio_usd: 1.5, stock: 20, ventas_acumuladas: 150 },
-  { id_producto: "americano", nombre: "Americano", descripcion: "Espresso alargado con agua caliente, suave y equilibrado.", categoria: "Café", precio_usd: 2.0, stock: 15, ventas_acumuladas: 130 },
-  { id_producto: "cortado", nombre: "Cortado", descripcion: "Espresso con un toque de leche vaporizada.", categoria: "Café", precio_usd: 2.25, stock: 2, ventas_acumuladas: 40 },
   { id_producto: "capuchino", nombre: "Capuchino", descripcion: "Espresso, leche vaporizada y espuma en partes iguales.", categoria: "Café", precio_usd: 2.75, stock: 18, ventas_acumuladas: 200 },
   { id_producto: "latte", nombre: "Latte", descripcion: "Más leche, textura sedosa y sabor suave.", categoria: "Café", precio_usd: 3.0, stock: 25, ventas_acumuladas: 180 },
-  { id_producto: "latte_macchiato", nombre: "Latte Macchiato", descripcion: "Capas de leche, espuma y un toque de espresso.", categoria: "Café", precio_usd: 3.5, stock: 0, ventas_acumuladas: 90 },
 ];
 
 export const CLIENTES = [
