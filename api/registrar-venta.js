@@ -5,8 +5,9 @@ export default async function handler(req, res) {
   }
 
   const scriptUrl = process.env.URLscript;
-  if (!scriptUrl) {
-    res.status(500).json({ ok: false, error: "Falta configurar la variable de entorno URLscript en Vercel." });
+  const token = process.env.token_conexion;
+  if (!scriptUrl || !token) {
+    res.status(500).json({ ok: false, error: "Faltan las variables de entorno URLscript o token_conexion en Vercel." });
     return;
   }
 
@@ -18,6 +19,7 @@ export default async function handler(req, res) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         action: "registrar_venta",
+        token,
         orderId,
         items: items || [],
       }),
